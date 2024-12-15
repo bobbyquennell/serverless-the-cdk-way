@@ -5,13 +5,13 @@ import path from 'path';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { AppConfig } from '../config/config';
 
-const { appEnv } = new AppConfig();
+const { appEnv, stackName } = new AppConfig();
 export class ServiceAStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const worker = new NodejsFunction(this, `service-a-worker-${appEnv}`, {
-      functionName: `service-a-worker-${appEnv}`,
+    const worker = new NodejsFunction(this, `${stackName}-lambda-${appEnv}`, {
+      functionName: `${stackName}-lambda-${appEnv}`,
       description: 'a lambda worker of example service A',
       runtime: lambda.Runtime.NODEJS_18_X,
       architecture: lambda.Architecture.ARM_64,
@@ -21,8 +21,8 @@ export class ServiceAStack extends cdk.Stack {
     });
     new cdk.CfnOutput(this, 'worker', {
       value: worker.functionArn,
-      description: `the arn of the lambda function: service-a-worker-${appEnv}`,
-      exportName: `service-a-worker-${appEnv}`,
+      description: `the arn of the lambda function: ${stackName}-lambda-${appEnv}`,
+      exportName: `${stackName}-lambda-${appEnv}`,
     });
   }
 }

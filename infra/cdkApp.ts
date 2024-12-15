@@ -5,7 +5,7 @@ import { ServiceAStack } from './serviceAStack';
 import { AppConfig } from '../config/config';
 import { SharedInfraStack } from './sharedInfraStack';
 
-const { appEnv, portfolio, deployConfig } = new AppConfig();
+const { appEnv, portfolio, deployConfig, stackName } = new AppConfig();
 const defaultStackProps = {
   env: {
     account: deployConfig.account,
@@ -15,6 +15,7 @@ const defaultStackProps = {
     environment: appEnv,
     ownership: portfolio,
     portfolio,
+    stack: stackName,
   },
 };
 const cdkApp = new cdk.App();
@@ -25,7 +26,7 @@ new SharedInfraStack(cdkApp, `${portfolio}-shared-infra-${appEnv}`, {
   description: `a stack that defines shared infrastructure resources for ${portfolio}`,
 });
 
-new ServiceAStack(cdkApp, `${portfolio}-service-a-${appEnv}`, {
+new ServiceAStack(cdkApp, `${portfolio}-${stackName}-${appEnv}`, {
   ...defaultStackProps,
-  description: `a stack that defines resources for ${portfolio} service A`,
+  description: `a stack that defines resources for ${portfolio} ${stackName} in ${appEnv}`,
 });

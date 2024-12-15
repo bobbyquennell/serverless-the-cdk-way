@@ -11,6 +11,7 @@ const ConfigSchema = Yup.object<NodeJS.ProcessEnv>()
     PORTFOLIO: Yup.string().required(),
     CDK_DEPLOY_ACCOUNT: Yup.string().required(),
     CDK_DEPLOY_REGION: Yup.string().required(),
+    STACK_NAME: Yup.string().required(),
   });
 export type AppConfigType = ReturnType<typeof ConfigSchema.cast>;
 
@@ -38,6 +39,10 @@ export class AppConfig {
   }
   public get portfolio() {
     return this.appConfig.PORTFOLIO;
+  }
+
+  public get stackName() {
+    return this.appConfig.STACK_NAME;
   }
   public get deployConfig() {
     return {
