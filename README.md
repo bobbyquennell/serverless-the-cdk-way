@@ -2,6 +2,29 @@
 
 create and deploy a simple serverless application within 10 mins
 
+## Prerequisites
+
+Before running the local invocation script, ensure you have AWS SAM installed on your machine. You can install it by following the instructions in the [AWS SAM documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html).
+
+### Installation Instructions
+
+- **For macOS**: You can install AWS SAM CLI using Homebrew:
+  ```bash
+  brew tap aws/tap
+  brew install aws-sam-cli
+  ```
+
+- **For Windows**: You can install AWS SAM CLI using the MSI installer available on the [AWS SAM CLI installation page](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-windows.html).
+
+- **For Linux**: You can install AWS SAM CLI using the following commands:
+  ```bash
+  curl -Lo sam-installation-script.sh https://raw.githubusercontent.com/aws/aws-sam-cli/develop/scripts/install.sh
+  chmod +x sam-installation-script.sh
+  ./sam-installation-script.sh
+  ```
+
+Make sure to follow the instructions specific to your operating system to ensure a successful installation.
+
 ## Infrastructure Tree
 
 we organize infra into a tree - [the construct tree](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html#constructs_tree), which will make our infra resources "loosely coupled" between services and make them easy to maintain and read.
@@ -53,3 +76,13 @@ graph TD
    run `cdk deploy` to deploy the resources
 
 Since this app includes more than a single stack, specify which stacks to use (wildcards are supported) or specify `--all`
+
+## Local Invocation of Lambda Functions
+
+Ensure you have a default `testEvent.json` in `src/scripts/`. This file should contain a sample event that your Lambda function expects. The script will work automatically with any Lambda function defined in your CDK stack, making it perfect for a template repository.
+
+### Creating the Default Test Event
+
+1. Navigate to the `src/scripts/` directory.
+2. Create a file named `testEvent.json`.
+3. Populate it with a sample event structure. For example:

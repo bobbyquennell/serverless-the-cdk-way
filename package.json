@@ -5,7 +5,9 @@
   "description": "create and deploy a simple serverless application with AWS CDK within 10 mins",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "invoke:local": "ts-node src/scripts/invokeLambda.ts",
+    "invoke:local:with-event": "ts-node src/scripts/invokeLambda.ts"
   },
   "repository": {
     "type": "git",
