@@ -60,7 +60,11 @@ try {
   ], { stdio: 'inherit' });
   
   process.exit(result.status || 0);
-} catch (error) {
-  console.error('Error:', error.message);
+} catch (error: unknown) {
+  if (error instanceof Error) {
+    console.error('Error:', error.message);
+  } else {
+    console.error('Error:', error);
+  }
   process.exit(1);
 }
