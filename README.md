@@ -79,7 +79,7 @@ Since this app includes more than a single stack, specify which stacks to use (w
 
 ## Local Invocation of Lambda Functions
 
-Ensure you have a default `testEvent.json` in `src/scripts/`. This file should contain a sample event that your Lambda function expects. The script will work automatically with any Lambda function defined in your CDK stack, making it perfect for a template repository.
+Ensure you have a default `testEvent.json` in `src/scripts/`. This file should contain a sample event that your Lambda function expects.
 
 ### Creating the Default Test Event
 
