@@ -3,28 +3,14 @@
 create and deploy a simple serverless application within 10 mins
 
 ## Prerequisites
-
-Before running the local invocation script, ensure you have AWS SAM installed on your machine. You can install it by following the instructions in the [AWS SAM documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html).
-
-### Installation Instructions
-
-- **For macOS**: You can install AWS SAM CLI using Homebrew:
+* Node.js (v18 or higher)
+* yarn
+* an AWS account
+* install AWS SAM CLI by running:
   ```bash
   brew tap aws/tap
   brew install aws-sam-cli
   ```
-
-- **For Windows**: You can install AWS SAM CLI using the MSI installer available on the [AWS SAM CLI installation page](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install-windows.html).
-
-- **For Linux**: You can install AWS SAM CLI using the following commands:
-  ```bash
-  curl -Lo sam-installation-script.sh https://raw.githubusercontent.com/aws/aws-sam-cli/develop/scripts/install.sh
-  chmod +x sam-installation-script.sh
-  ./sam-installation-script.sh
-  ```
-
-Make sure to follow the instructions specific to your operating system to ensure a successful installation.
-
 ## Infrastructure Tree
 
 we organize infra into a tree - [the construct tree](https://docs.aws.amazon.com/cdk/v2/guide/constructs.html#constructs_tree), which will make our infra resources "loosely coupled" between services and make them easy to maintain and read.
@@ -65,6 +51,19 @@ graph TD
 > **note**:
 >
 > - this diagram is rendered with [Mermaid](https://mermaid.js.org/), to learn more, visit github blog: [Include diagrams in your Markdown files with Mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+
+## Setup
+1. Install dependencies:
+   ```bash
+   yarn install
+   ```
+2. Config Environment Variables
+
+   After cloning the repository, create a `.env.local` file based on the provided example:
+   ```bash
+   cp .env.local.example .env.local
+   ```
+    Then, fill in the necessary values in the `.env.local` file.
 
 ## Development and Deploy
 

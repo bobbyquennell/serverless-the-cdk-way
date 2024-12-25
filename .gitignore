@@ -106,3 +106,5 @@ dist
 # AWS CDK asset staging directory
 .cdk.staging
 cdk.out
+# prevent the .env.local file from being pushed to git
+.env.local
